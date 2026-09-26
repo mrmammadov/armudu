@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Armudu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<main class="stage" id="stage" tabindex="0" aria-label="Article seen through a glass of tea. Arrow keys move the glass, space sloshes it, Page Up and Page Down scroll.">
+  <canvas id="view"></canvas>
+  <div class="hint" id="hint" aria-live="polite">Move to steer the glass · click to slosh · scroll to read</div>
+</main>
+
+<section class="panel" aria-label="Glass settings">
+  <div class="group">
+    <span class="label">In the glass</span>
+    <div class="chips" role="radiogroup" aria-label="Drink" id="drinks">
+      <button class="chip" role="radio" data-drink="black" aria-checked="true"><span class="dot" style="background:#8A3A0C"></span>Strong black</button>
+      <button class="chip" role="radio" data-drink="weak" aria-checked="false"><span class="dot" style="background:#D08A3C"></span>Weak black</button>
+      <button class="chip" role="radio" data-drink="green" aria-checked="false"><span class="dot" style="background:#B7B04A"></span>Green</button>
+      <button class="chip" role="radio" data-drink="water" aria-checked="false"><span class="dot" style="background:#E4EEF0"></span>Water</button>
+    </div>
+  </div>
+
+  <div class="group">
+    <label class="label" for="tea">Strength <output id="teaOut"></output></label>
+    <input type="range" id="tea" min="0" max="1.6" step="0.01" value="1">
+  </div>
+  <div class="group">
+    <label class="label" for="mag">Magnification <output id="magOut"></output></label>
+    <input type="range" id="mag" min="1" max="2.4" step="0.01" value="1.55">
+  </div>
+  <div class="group">
+    <label class="label" for="wobble">Wobble <output id="wobbleOut"></output></label>
+    <input type="range" id="wobble" min="0" max="1" step="0.01" value="0.45">
+  </div>
+  <div class="group">
+    <label class="label" for="size">Glass size <output id="sizeOut"></output></label>
+    <input type="range" id="size" min="60" max="260" step="1" value="150">
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="wander" aria-pressed="true">Let it wander</button>
+    <label class="btn" for="file">Use your screenshot</label>
+    <input class="visually-hidden" type="file" id="file" accept="image/*">
+    <button class="btn" id="sample" hidden>Back to sample article</button>
+  </div>
+</section>
+
+<script src="src/article.js"></script>
+<script src="src/shaders.js"></script>
+<script src="src/armudu.js"></script>
+</body>
+</html>
