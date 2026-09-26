@@ -6,7 +6,7 @@ A WebGL shader that warps text the way it looks through an *armudu*, the
 pear-shaped Azerbaijani tea glass. The middle is magnified, the rim is squeezed,
 the page turns amber, and the tea sloshes and ripples as you move the glass.
 
-<!-- TODO: add preview.gif -->
+![A glass of tea sliding over an article, magnifying and warping the text](docs/preview.gif)
 
 ## Run it
 

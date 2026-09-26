@@ -74,7 +74,7 @@ const FRAG = `
     inCol.b = (src(cB + o1).b + src(cB - o1).b + src(cB + o2).b + src(cB - o2).b) * 0.25;
 
     // Beer-Lambert: longer path near the rim and where the liquid pooled
-    float path = 1.0 + 1.8 * r * r + 0.6 * dot(q, -uSlosh);
+    float path = 1.0 + 1.1 * r * r + 0.5 * dot(q, -uSlosh);
     inCol *= exp(-uAbsorb * uTea * max(path, 0.3));
     inCol = mix(inCol, teaHue * 0.85, 0.08 * min(uTea, 1.5) * r);
 
@@ -87,12 +87,14 @@ const FRAG = `
     vec2 gq = q - vec2(-0.36, -0.46);
     inCol += exp(-dot(gq, gq) * 160.0) * 0.55;
     float back = pow(max(dot(nq, normalize(vec2(0.7, 1.0))), 0.0), 3.0) * smoothstep(0.55, 0.97, r);
-    inCol = mix(inCol, min(inCol * vec3(1.2, 1.02, 0.8), 1.0), back * 0.5 * min(uTea + 0.2, 1.0));
+    inCol = mix(inCol, min(inCol * vec3(1.2, 1.02, 0.8), 1.0), back * 0.3 * min(uTea + 0.2, 1.0));
     inCol *= 1.0 - 0.45 * smoothstep(0.9, 1.0, r);
 
     // ---- the glass wall: a thin, squeezed view of the page further out ----
     float w = clamp((r - 1.0) / 0.07, 0.0, 1.0);
-    vec3 wallCol = src(uC + nq * (edge + 0.05 + w * 0.6) * uR) * vec3(0.9, 0.96, 0.94);
+    float wr = edge + 0.05 + w * 0.25;
+    vec3 wallCol = (src(uC + nq * (wr - 0.03) * uR) + src(uC + nq * wr * uR) + src(uC + nq * (wr + 0.03) * uR)) / 3.0;
+    wallCol *= vec3(0.9, 0.96, 0.94);
     wallCol = mix(wallCol, vec3(1.0), 0.1 + 0.3 * pow(facing, 3.0));
     wallCol *= 1.0 - 0.35 * smoothstep(0.5, 1.0, w) * (1.0 - facing);
 

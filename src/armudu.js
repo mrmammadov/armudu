@@ -58,9 +58,9 @@
 
   /* ---------- state ---------- */
   const DRINKS = {
-    black: { absorb: [0.12, 0.55, 1.35], tea: 1.0 },
-    weak:  { absorb: [0.12, 0.55, 1.35], tea: 0.4 },
-    green: { absorb: [0.42, 0.14, 0.95], tea: 0.55 },
+    black: { absorb: [0.10, 0.40, 0.78], tea: 1.0 },
+    weak:  { absorb: [0.10, 0.40, 0.78], tea: 0.4 },
+    green: { absorb: [0.30, 0.10, 0.65], tea: 0.55 },
     water: { absorb: [0.05, 0.02, 0.01], tea: 0.0 },
   };
   const ui = {

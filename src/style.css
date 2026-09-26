@@ -27,6 +27,7 @@
 
 html { height: 100%; box-sizing: border-box; padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px); }
 *, *::before, *::after { box-sizing: inherit; }
+[hidden] { display: none !important; }
 body {
   margin: 0;
   height: 100%;
